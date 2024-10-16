@@ -1,11 +1,12 @@
 import React from 'react';
-import { productos } from './Productos';
+import { productos } from './Productos'; // Asegúrate de que la ruta sea correcta
+import { useParams } from 'react-router-dom';
 
-const DetalleProducto = ({ id }) => {
-  const product = productos.find(p => p.id === id);
+const DetalleProducto = () => {
+  const { id } = useParams(); // Obtén el id de los parámetros de la URL
+  const productId = Number(id); // Convierte el id a número
 
-  if (!product) return <div style={styles.error}>Producto no encontrado.</div>;
-
+  // Define los estilos al inicio del componente
   const styles = {
     container: {
       maxWidth: '600px',
@@ -41,6 +42,10 @@ const DetalleProducto = ({ id }) => {
       fontWeight: 'bold',
     },
   };
+
+  const product = productos.find(p => p.id === productId); // Usa el productId convertido
+
+  if (!product) return <div style={styles.error}>Producto no encontrado.</div>;
 
   return (
     <div style={styles.container}>

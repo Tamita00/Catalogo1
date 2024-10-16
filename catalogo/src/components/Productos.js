@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import img3 from '../assets/imagenes/p3.jpg';
+import img4 from '../assets/imagenes/p4.jpg';
+import img1 from '../assets/imagenes/p1.jpg';
+import img2 from '../assets/imagenes/p2.jpg';
+import img5 from '../assets/imagenes/p5.jpg';
+import img6 from '../assets/imagenes/p6.jpg';
 
 // Define el array de productos fuera del componente
 export const productos = [
-  { id: 1, nombre: 'Marrón Bueno', categoria: 'BuenaCalidad', imagen: '../assets/imagenes/p1.jfif', precio: 10.000 },
-{ id: 2, nombre: 'Negro Bueno', categoria: 'BuenaCalidad', imagen: '../assets/imagenes/p2.jfif', precio: 10.000 },
-{ id: 3, nombre: 'Negro Malo', categoria: 'MalaCalidad', imagen: '../assets/imagenes/p3.jpg', precio: 5.000 },
-{ id: 4, nombre: 'Marrón Bueno', categoria: 'MalaCalidad', imagen: '../assets/imagenes/p4.jpg', precio: 5.000 },
-{ id: 2, nombre: 'Negro Deforme', categoria: 'MalaCalidad', imagen: '../assets/imagenes/p5.jfif', precio: 5.000 },
-{ id: 3, nombre: 'Lit Salchicha', categoria: 'BuenaCalidad', imagen: '../assets/imagenes/6.jfif', precio: 10.000 }
+  { id: 1, nombre: 'Marrón Bueno', categoria: 'BuenaCalidad', imagen: img1, precio: 10.000 },
+{ id: 2, nombre: 'Negro Bueno', categoria: 'BuenaCalidad', imagen: img2, precio: 10.000 },
+{ id: 3, nombre: 'Negro Malo', categoria: 'MalaCalidad', imagen: img3, precio: 5.000 },
+{ id: 4, nombre: 'Marrón Bueno', categoria: 'MalaCalidad', imagen: img4, precio: 5.000 },
+{ id: 2, nombre: 'Negro Deforme', categoria: 'MalaCalidad', imagen: img5, precio: 5.000 },
+{ id: 3, nombre: 'Lit Salchicha', categoria: 'BuenaCalidad', imagen: img6, precio: 10.000 }
 ];
 
 const Products = () => {
@@ -94,7 +102,7 @@ const Products = () => {
       <ul style={styles.productList}>
         {productosFiltrados.map((producto) => (
           <li key={producto.id} style={styles.productItem}>
-            <img src={producto.imagen} alt={producto.nombre} style={styles.productImage} />
+            <Link to={`/detalleProducto/${producto.id}`}><img src={producto.imagen} alt="Carrusel 1" style={styles.carouselImage} /></Link>
             <p>{producto.nombre}</p>
           </li>
         ))}

@@ -1,5 +1,13 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import DetalleProducto from './DetalleProducto';
 import { Link } from 'react-router-dom';
+import img3 from '../assets/imagenes/p3.jpg';
+import img4 from '../assets/imagenes/p4.jpg';
+import img1 from '../assets/imagenes/p1.jpg';
+import img2 from '../assets/imagenes/p2.jpg';
+import img5 from '../assets/imagenes/p5.jpg';
+import img6 from '../assets/imagenes/p6.jpg';
 
 const Home = () => {
   // Simulando productos aleatorios
@@ -58,18 +66,18 @@ const Home = () => {
       <h1 style={styles.title}>Home</h1>
 
       <div style={styles.carousel}>
-        <img src="../assets/imagenes/p1.jfif" alt="Carrusel 1" style={styles.carouselImage} />
-        <img src="../assets/imagenes/p2.jfif" alt="Carrusel 2" style={styles.carouselImage} />
-        <img src="../assets/imagenes/p3.jpg" alt="Carrusel 3" style={styles.carouselImage} />
-        <img src="../assets/imagenes/p4.jpg" alt="Carrusel 4" style={styles.carouselImage} />
-        <img src="../assets/imagenes/p5.jfif" alt="Carrusel 5" style={styles.carouselImage} />
-        <img src="../assets/imagenes/p6.jfif" alt="Carrusel 6" style={styles.carouselImage} />
+        <img src={img1} alt="Carrusel 1" style={styles.carouselImage} />
+        <img src={img2} alt="Carrusel 2" style={styles.carouselImage} />
+        <img src={img3} alt="Carrusel 3" style={styles.carouselImage} />
+        <img src={img4} alt="Carrusel 4" style={styles.carouselImage} />
+        <img src={img5} alt="Carrusel 5" style={styles.carouselImage} />
+        <img src={img6} alt="Carrusel 6" style={styles.carouselImage} />
       </div>
 
       <div style={styles.products}>
         {productos.map(producto => (
           <div key={producto.id} style={styles.productCard}>
-            <Link to={`/productos/${producto.id}`}>{producto.nombre}</Link>
+            <Link to={`/detalleProducto/${producto.id}`}>{producto.nombre}</Link>
           </div>
         ))}
       </div>
