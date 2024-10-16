@@ -1,77 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
 import React from 'react';
-import Home from './components/Home';
-
-// Simular datos de productos
-const productos = [
-  { id: 1, nombre: 'Producto 1', imagen: 'img1.jpg' },
-  { id: 2, nombre: 'Producto 2', imagen: 'img2.jpg' },
-  { id: 3, nombre: 'Producto 3', imagen: 'img3.jpg' },
-  { id: 4, nombre: 'Producto 4', imagen: 'img4.jpg' },
-  { id: 5, nombre: 'Producto 5', imagen: 'img5.jpg' },
-  { id: 6, nombre: 'Producto 6', imagen: 'img6.jpg' },
-  { id: 7, nombre: 'Producto 7', imagen: 'img7.jpg' },
-];
-
-// Función para obtener productos aleatorios
-const obtenerProductosAleatorios = () => {
-  return productos.sort(() => 0.5 - Math.random()).slice(0, 6);
-};
-
-const productosAleatorios = obtenerProductosAleatorios();
-
-
-function App() {
-  return (
-    <div>
-      <Home/>
-    </div>
-  );
-}
-
-export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//////////////
-
-
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './components/Home';
-import Products from './components/Products';
-import ProductDetail from './components/ProductDetail';
-import Contact from './components/Contact';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Home from './components/Home';
+import Productos from './components/Productos';
+import DetalleProducto from './components/DetalleProducto';
 
 const App = () => {
+  const styles = {
+    app: {
+      display: 'flex',
+      flexDirection: 'column',
+      minHeight: '100vh',
+      fontFamily: 'Arial, sans-serif',
+      backgroundColor: '#f0f0f0',
+    },
+    main: {
+      flex: '1',
+      padding: '20px',
+      backgroundColor: '#fff',
+      borderRadius: '8px',
+      boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
+    },
+  };
+
   return (
     <Router>
-      <Header />
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/products" component={Products} />
-        <Route path="/product/:id" component={ProductDetail} />
-        <Route path="/contact" component={Contact} />
-      </Switch>
-      <Footer />
+      <div style={styles.app}>
+        <Header />
+        <main style={styles.main}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/productos" element={<Productos />} />
+            <Route path="/productos/:id" element={<DetalleProducto />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </Router>
   );
 };
